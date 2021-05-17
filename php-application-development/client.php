@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>H200004N - CAD Assignment </title>
+</head>
+
 <body>
 <?php
 // building array of variables
@@ -12,11 +16,9 @@ $context = stream_context_create(array(
 
     'http' => array(
         //'header' => 'Content-type: application/json',
-
         'method' => 'POST',
         'content' => $content,)));
 $response = file_get_contents('http://localhost/api/server.php', NULL, $context);
-
 ?><p><?php
 
 echo $response;
