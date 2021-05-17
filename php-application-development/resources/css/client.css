@@ -1,0 +1,58 @@
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.user {
+    margin-left: 20%;
+    margin-top: 5%;
+    width: 60%;
+    padding: 10px;
+    background-color: lightgrey;
+    border: 1px solid black;
+    border-radius:10px;
+}
+
+.fluid-input{
+    height: 30px;
+    border-radius:5px;
+    background-color: white;
+    font-size:14px;
+}
+
+.submit {
+    background-color: palegreen;
+    height: 40px;
+    border-radius:5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.cancel{
+    background-color: antiquewhite;
+    height: 40px;
+    border-radius:5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.row-fluid{
+    width: 100%;
+    padding: 5px;
+}
+
+.wid-12{
+    width: 98%;
+    position: relative;
+    padding:5px;
+}
+
+.wid-6{
+    width: 48.9%;
+    position: relative;
+}

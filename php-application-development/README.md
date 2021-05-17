@@ -24,3 +24,5 @@ Deploy the application in a project/repository on Github.
 To start the application, go the project folder and type
 
 *php -S localhost:8000*
+
+This project uses bootstrap-3.4.1
