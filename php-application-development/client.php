@@ -54,6 +54,7 @@ if (isset($_POST)) {
     $response = file_get_contents("http://localhost/api/server.php", false, $context);
     $output = json_decode($response, true);
 
+
     ?>
 
     <?php
