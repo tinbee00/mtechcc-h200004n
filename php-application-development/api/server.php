@@ -1,11 +1,11 @@
 <?php
 header("Content-Type:application/json");
 require "Data.php";
-if (!empty($_POST['name'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $semester = $_POST['semester'];
-
+if (!empty($_GET['name'])) {
+    $name = $_GET['name'];
+    $email = $_GET['email'];
+    $semester = $_GET['semester'];
+    echo "Server";
     $courses = get_courses($name, $email, $semester);
     if (empty($courses)) {
         response(200, "Courses Not Found", NULL);
