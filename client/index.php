@@ -14,7 +14,9 @@
 </head>
 </head>
 <body>
-
+<div class="row-fluid wid-12 head">
+    <p>ENTER STUDENT DETAILS BELOW TO CHECK THEIR REGISTRATION STATUS</p>
+</div>
 <form method="POST" action="#">
     <fieldset>
         <div class="user">
@@ -50,8 +52,8 @@ if (isset($_POST)) {
     $semester = $_POST['semester'];
     $opts = array(
         'http' => array(
-            'method' => "GET",
-            'header' => "Accept-language: en\r\n",
+            'method' => "POST",
+            'header' => "Accept-language: en",
             'header' => 'Content-type: application/json'
         )
     );
