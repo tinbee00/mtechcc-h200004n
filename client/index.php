@@ -44,8 +44,7 @@
 
 <script src="resources/js/jquery-1.9.1.js"></script>
 <script>
-    $(document).ready(function ($) {
-
+    $(document).ready(function () {
         $('#collectInfo').on('submit', function (e) {
             alert('Submitting request');
             e.preventDefault();

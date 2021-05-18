@@ -5,8 +5,7 @@ require "Data.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $semester = $_POST['semester'];
-    $courses = get_courses($name, $email, $semester);
+    $courses = get_courses($name, $email);
     if (empty($courses)) {
         response(200, "Courses Not Found", NULL);
     } else {

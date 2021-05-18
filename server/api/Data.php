@@ -1,10 +1,10 @@
 <?php
-    function get_courses($name, $email, $semester)
+    function get_courses($name, $email)
     {
         $courses_response = array();
         $db = 'tinbee00_h200004n_assign1';
-        $mysqli = new mysqli('204.93.193.125', 'tinbee00_h200004', 'h200004n', $db);
-        $sql = "SELECT c.course_code,c.course_name FROM  registered_courses c LEFT JOIN students s ON s.id=c.students_id WHERE s.email='" . $email . "' AND c.name='" . $name . "'";
+        $mysqli = new mysqli('204.93.193.125', 'tinbee00_h200004', 'tinbee00_h200004', $db,'3306');
+        $sql = "SELECT c.course_code,c.course_name FROM  registered_courses c LEFT JOIN students s ON s.id=c.students_id WHERE s.email='" . $email . "' AND s.name='" . $name . "'";
         if ($mysqli->connect_error) {
          return 'Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error();
         } else {
