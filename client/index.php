@@ -6,10 +6,16 @@
     <title>H200004N - CAD Assignment </title>
     <link rel="stylesheet" href="resources/css/client.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        function process_form(a,b){
+
+        }
+    </script>
+</head>
 </head>
 <body>
 
-<form action="api/server.php" method="POST">
+<form method="POST" action="#">
     <fieldset>
         <div class="user">
             <div class="row-fluid">
@@ -49,22 +55,15 @@ if (isset($_POST)) {
             'header' => 'Content-type: application/json'
         )
     );
-
     $context = stream_context_create($opts);
-    $response = file_get_contents("http://localhost/api/server.php", false, $context);
+    $response = file_get_contents("http://mtech.t-sols.com/h200004n/server/api/courses", false, $context);
     $output = json_decode($response, true);
-
-
-    ?>
-
-    <?php
     if (isset($output)) {
         echo 'Status Code:' . $output['status'];
     }
 }
-
 ?>
 
-
 </body>
+
 </html>

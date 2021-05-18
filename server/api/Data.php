@@ -1,7 +1,4 @@
 <?php
-
-class Data
-{
     function get_courses($name, $email, $semester)
     {
         $courses_response = array();
@@ -21,6 +18,6 @@ class Data
         }
         return $courses_response;
     }
-}
+
 
 ?>
