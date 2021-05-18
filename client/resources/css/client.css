@@ -57,10 +57,10 @@ body {
     position: relative;
 }
 
-.head{
+.head p{
     position: relative;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
-    text-align: center;
+    text-align: center !important;
     color: chartreuse;
 }

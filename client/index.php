@@ -6,23 +6,18 @@
     <title>H200004N - CAD Assignment </title>
     <link rel="stylesheet" href="resources/css/client.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript">
-        function process_form(a,b){
-
-        }
-    </script>
 </head>
 </head>
 <body>
 <div class="row-fluid wid-12 head">
     <p>ENTER STUDENT DETAILS BELOW TO CHECK THEIR REGISTRATION STATUS</p>
 </div>
-<form method="POST" action="#">
+<form method="POST" id="collectInfo">
     <fieldset>
         <div class="user">
             <div class="row-fluid">
                 <label for="name">Name:</label>
-                <input type="text" class="wid-12 fluid-input" name="name " id="name" required="">
+                <input type="text" class="wid-12 fluid-input" name="name" id="name" required="">
             </div>
             <div class="row-fluid">
                 <label for="email">E-mail:</label>
@@ -43,29 +38,38 @@
         </div>
     </fieldset>
 </form>
+<div class="row-fluid response_message">
+</div>
 
 
-<?php
-if (isset($_POST)) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $semester = $_POST['semester'];
-    $opts = array(
-        'http' => array(
-            'method' => "POST",
-            'header' => "Accept-language: en",
-            'header' => 'Content-type: application/json'
-        )
-    );
-    $context = stream_context_create($opts);
-    $response = file_get_contents("http://mtech.t-sols.com/h200004n/server/api/courses", false, $context);
-    $output = json_decode($response, true);
-    if (isset($output)) {
-        echo 'Status Code:' . $output['status'];
-    }
-}
-?>
+<script src="resources/js/jquery-1.9.1.js"></script>
+<script>
+    $(document).ready(function ($) {
 
+        $('#collectInfo').on('submit', function (e) {
+            alert('Submitting request');
+            e.preventDefault();
+            $.ajax({
+
+                dataType: 'json',
+                type: 'post',
+                url: 'http://mtech.t-sols.com/h200004n/server/api/courses',
+                data: $('#collectInfo').serialize(),
+                success: function (data) {
+                    if (data.status != '300') {
+                        output = '<div class="error">' + data.status_message + '</div>';
+                    } else {
+                        output = '<div class="success">' + data.status_message + '</div>';
+                        $('input[type=text]').val('');
+                    }
+                    $("#response_message").show().html(output).slideDown();
+                }
+
+            });
+
+        });
+    });
+
+</script>
 </body>
-
 </html>

@@ -8,8 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $semester = $_POST['semester'];
     $courses = get_courses($name, $email, $semester);
     if (empty($courses)) {
-         response(200, "Courses Not Found", NULL);
+        response(200, "Courses Not Found", NULL);
     } else {
+        if (strpos($courses, 'Connect Error (') !== false) {
+            return response(400, $courses, NULL);
+        }
         return response(300, "Courses Found", $courses);
     }
 } else {
@@ -22,7 +25,7 @@ function response($status, $status_message, $data)
     $response['status'] = $status;
     $response['status_message'] = $status_message;
     $response['data'] = $data;
-    echo "\n\n".json_encode($response);
+    echo "\n\n" . json_encode($response);
     return json_encode($response);
 }
 
