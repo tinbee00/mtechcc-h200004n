@@ -46,14 +46,22 @@
 <script>
     $(document).ready(function () {
         $('#collectInfo').on('submit', function (e) {
+            let name = $('#name').val();
+            let email = $('#email').val();
+            let semester = $('#semester').val();
+
             alert('Submitting request');
             e.preventDefault();
             $.ajax({
-
+                crossDomain: true,
                 dataType: 'json',
-                type: 'post',
-                url: 'http://mtech.t-sols.com/h200004n/server/api/courses',
-                data: $('#collectInfo').serialize(),
+                type: 'POST',
+                url: 'http://mtech.t-sols.com/h200004n/server/api/courses.php',
+                data: {
+                    'name': name,
+                    'email': email,
+                    'semester': semester
+                },
                 success: function (data) {
                     if (data.status != '300') {
                         output = '<div class="error">' + data.status_message + '</div>';

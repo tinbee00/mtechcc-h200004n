@@ -1,6 +1,8 @@
 <?php
 header("Content-Type:application/json");
 header("Accept: application/json");
+header("CORS_ORIGIN_ALLOW_ALL: True");
+header("Access-Control-Allow-Origin: *");
 require "Data.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
