@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($courses)) {
         response(200, "Courses Not Found", NULL);
     } else {
-        if (strpos($courses, 'Connect Error (') !== false) {
+        if (strpos($courses, 'Connect Error (') == true) {
             return response(400, $courses, NULL);
         }
         return response(300, "Courses Found", $courses);

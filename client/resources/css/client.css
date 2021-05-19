@@ -64,3 +64,11 @@ body {
     text-align: center !important;
     color: forestgreen;
 }
+
+.error{
+    color: red;
+}
+.success{
+    color: forestgreen;
+    border: black 3px;
+}

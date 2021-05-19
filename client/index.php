@@ -38,7 +38,7 @@
         </div>
     </fieldset>
 </form>
-<div class="row-fluid response_message">
+<div class="row-fluid response_message" id="response_message">
 </div>
 
 
@@ -50,7 +50,7 @@
             let email = $('#email').val();
             let semester = $('#semester').val();
 
-            alert('Submitting request');
+            console.log('Submitting request: ' +name+ ' , '+email+' Semester: '+semester);
             e.preventDefault();
             $.ajax({
                 crossDomain: true,
@@ -63,13 +63,20 @@
                     'semester': semester
                 },
                 success: function (data) {
-                    if (data.status != '300') {
-                        output = '<div class="error">' + data.status_message + '</div>';
+                    console.log(data);
+                    if (data.status != 300) {
+                        output = '<div class="error"> Response Message: ' + data.status_message + '</div>';
                     } else {
-                        output = '<div class="success">' + data.status_message + '</div>';
+                        output = '<div class="success">Response Message: ' + data.status_message+'<br/><br/>';
+                        output=output+'<table border="1"><thead><th>Course Code</th><th>Course Name</th><tbody>';
+                        data.data.forEach(function(course){
+                            output=output+'<tr><td>'+course.course_code+'</td><td>'+course.course_name+'</td>';
+                        });
+                        output=output+'</tbody></table>';
+                        output=output + '</div>';
                         $('input[type=text]').val('');
                     }
-                    $("#response_message").show().html(output).slideDown();
+                    $("#response_message").html(output).slideDown();
                 }
 
             });
