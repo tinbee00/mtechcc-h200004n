@@ -1,0 +1,24 @@
+on:
+  release:
+    types: [created]
+env:
+  AZURE_WEBAPP_NAME: mtech-h200004n    # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'    
+pool:
+  vmImage: 'Ubuntu 18.04'
+variables:
+  phpVersion: 7.4.3
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - script: | 
+      sudo update-alternatives --set php /usr/bin/php$(phpVersion)
+      sudo update-alternatives --set phar /usr/bin/phar$(phpVersion)
+      sudo update-alternatives --set phpdbg /usr/bin/phpdbg$(phpVersion)
+      sudo update-alternatives --set php-cgi /usr/bin/php-cgi$(phpVersion)
+      sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
+      php -version
+    displayName: 'Use PHP version $(phpVersion)'
